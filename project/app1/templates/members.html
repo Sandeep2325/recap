@@ -12,6 +12,20 @@
 </header>
 
 <div class="panel">
+  <form method="get" action="{% url 'members' %}" style="max-width: none; margin-bottom: 1rem; display: flex; gap: 0.5rem; align-items: center;">
+    <input
+      type="text"
+      name="q"
+      value="{{ query }}"
+      placeholder="Search by name"
+      style="max-width: 280px;"
+    />
+    <button class="btn btn-primary" type="submit">Search</button>
+    {% if query %}
+    <a class="btn btn-ghost" href="{% url 'members' %}">Clear</a>
+    {% endif %}
+  </form>
+
   {% if members %}
   <table>
     <thead>
@@ -40,6 +54,8 @@
       {% endfor %}
     </tbody>
   </table>
+  {% elif query %}
+  <p class="empty">No members match “{{ query }}”.</p>
   {% else %}
   <p class="empty">No members yet. Add your first one.</p>
   {% endif %}

@@ -1,14 +1,23 @@
 from django.shortcuts import redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
+from django.db.models import Q
 from .models import Member
 
 
 def members(request):
+    query = request.GET.get('q', '').strip()
     all_members = Member.objects.all().order_by('id')
+
+    if query:
+        all_members = all_members.filter(
+            Q(firstname__icontains=query) | Q(lastname__icontains=query)
+        )
+
     template = loader.get_template('members.html')
     context = {
         'members': all_members,
+        'query': query,
     }
     return HttpResponse(template.render(context, request))
 
