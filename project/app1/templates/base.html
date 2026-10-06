@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Members{% endblock %}</title>
+    <style>
+      :root {
+        --bg: #f6f4ef;
+        --ink: #1c1b19;
+        --muted: #5c574e;
+        --line: #d9d3c7;
+        --accent: #0f5c4c;
+        --accent-soft: #e4f1ed;
+        --danger: #8b2e2e;
+        --danger-soft: #f7e8e8;
+        --card: #fffdf8;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background:
+          radial-gradient(circle at top left, #efe8d8 0%, transparent 40%),
+          var(--bg);
+        color: var(--ink);
+        min-height: 100vh;
+      }
+
+      .wrap {
+        width: min(920px, calc(100% - 2rem));
+        margin: 2rem auto;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h1, h2 {
+        margin: 0;
+        font-weight: 650;
+        letter-spacing: -0.02em;
+      }
+
+      p.lead {
+        margin: 0.35rem 0 0;
+        color: var(--muted);
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1.25rem;
+        box-shadow: 0 10px 30px rgba(28, 27, 25, 0.04);
+      }
+
+      .btn {
+        display: inline-block;
+        border: 0;
+        border-radius: 10px;
+        padding: 0.65rem 1rem;
+        text-decoration: none;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+      }
+
+      .btn-secondary {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .btn-danger {
+        background: var(--danger);
+        color: white;
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--muted);
+        border: 1px solid var(--line);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 0.85rem 0.5rem;
+        border-bottom: 1px solid var(--line);
+        vertical-align: middle;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .empty {
+        color: var(--muted);
+        padding: 1rem 0;
+      }
+
+      form {
+        display: grid;
+        gap: 1rem;
+        max-width: 420px;
+      }
+
+      label {
+        display: grid;
+        gap: 0.4rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 0.7rem 0.8rem;
+        font: inherit;
+        background: white;
+      }
+
+      input:focus {
+        outline: 2px solid color-mix(in srgb, var(--accent) 35%, white);
+        border-color: var(--accent);
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 0.6rem;
+        margin-top: 0.25rem;
+      }
+
+      .warn {
+        background: var(--danger-soft);
+        color: var(--danger);
+        border-radius: 10px;
+        padding: 0.9rem 1rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

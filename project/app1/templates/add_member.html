@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Add member{% endblock %}
+
+{% block content %}
+<header>
+  <div>
+    <h1>Add member</h1>
+    <p class="lead">Create a new member record.</p>
+  </div>
+  <a class="btn btn-ghost" href="{% url 'members' %}">Back</a>
+</header>
+
+<div class="panel">
+  <form method="post">
+    {% csrf_token %}
+    <label>
+      First name
+      <input type="text" name="firstname" required maxlength="255" />
+    </label>
+    <label>
+      Last name
+      <input type="text" name="lastname" required maxlength="255" />
+    </label>
+    <label>
+      Phone
+      <input type="number" name="phone" />
+    </label>
+    <label>
+      Joined date
+      <input type="date" name="joined_date" />
+    </label>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Save</button>
+      <a class="btn btn-ghost" href="{% url 'members' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

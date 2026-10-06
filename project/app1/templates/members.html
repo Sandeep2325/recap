@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Members{% endblock %}
+
+{% block content %}
+<header>
+  <div>
+    <h1>Members</h1>
+    <p class="lead">Add, update, or delete members.</p>
+  </div>
+  <a class="btn btn-primary" href="{% url 'add_member' %}">Add member</a>
+</header>
+
+<div class="panel">
+  {% if members %}
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Joined</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for member in members %}
+      <tr>
+        <td>{{ member.id }}</td>
+        <td>{{ member.firstname }} {{ member.lastname }}</td>
+        <td>{{ member.phone|default:"—" }}</td>
+        <td>{{ member.joined_date|default:"—" }}</td>
+        <td>
+          <div class="actions">
+            <a class="btn btn-secondary" href="{% url 'update_member' member.id %}">Edit</a>
+            <a class="btn btn-ghost" href="{% url 'delete_member' member.id %}">Delete</a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No members yet. Add your first one.</p>
+  {% endif %}
+</div>
+{% endblock %}
