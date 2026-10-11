@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'app1',
     'api',
+    'mcp',
 ]
 
 MIDDLEWARE = [
